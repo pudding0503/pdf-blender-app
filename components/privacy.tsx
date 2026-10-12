@@ -7,8 +7,11 @@ import { site } from "@/lib/site";
 import { useLanguage } from "./language-provider";
 
 function PolicyText({ text }: { text: string }) {
-  const parts = text.split(/(\[.*?\]\(https:\/\/vercel\.com\/legal\/privacy-policy\))/g);
-  return <>{parts.map((part, i) => part.startsWith("[") && part.endsWith("(https://vercel.com/legal/privacy-policy)") ? <a key={i} href="https://vercel.com/legal/privacy-policy">{part.slice(1, part.indexOf("]"))}</a> : part.replace(/\*\*/g, ""))}</>;
+  const parts = text.split(/(\[.*?\]\(https:\/\/(?:vercel\.com\/legal\/privacy-policy|github\.com\/bitcookies\/pdf-blender\/issues)\))/g);
+  return <>{parts.map((part, i) => {
+    const link = part.match(/^\[(.*?)\]\((https:\/\/.*?)\)$/);
+    return link ? <a key={i} href={link[2]}>{link[1]}</a> : part.replace(/\*\*/g, "");
+  })}</>;
 }
 export default function Privacy() {
   const { locale } = useLanguage();
@@ -16,7 +19,7 @@ export default function Privacy() {
   const c = content[locale];
   return <main id="main" className="privacy-page container">
     <Link className="back-link" href="/"><ArrowLeft size={16} aria-hidden="true" />{c.back}</Link>
-    <header className="privacy-header"><p className="section-kicker">PDF Blender · Bitcookies</p><h1>{p.title}</h1><p className="policy-date">{c.effective}: <time dateTime={site.policyDate}>{site.policyDate}</time></p><p><PolicyText text={p.intro} /></p></header>
+    <header className="privacy-header"><p className="section-kicker">PDF Blender · BITCOOKIES</p><h1>{p.title}</h1><p className="policy-date">{c.effective}: <time dateTime={site.policyDate}>{site.policyDate}</time></p><p><PolicyText text={p.intro} /></p></header>
     <nav className="policy-contents" aria-label={c.contents}><h2>{c.contents}</h2><ol>{p.sections.map((section, i) => <li key={section.title}><a href={`#policy-${i + 1}`}>{section.title.replace(/^\d+\.\s*/, "")}</a></li>)}</ol></nav>
     <article className="policy-body">{p.sections.map((section, i) => <section key={section.title} id={`policy-${i + 1}`}><h2>{section.title}</h2>{section.paragraphs.map((text, j) => <p key={j}><PolicyText text={text} /></p>)}</section>)}</article>
   </main>;

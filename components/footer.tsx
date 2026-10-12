@@ -14,8 +14,8 @@ export default function Footer() {
     <div className="footer-grid">
       <div><Link className="brand" href="/"><Image src={logo} alt="" width={32} height={32} /><span>PDF Blender</span></Link><p className="footer-slogan">{c.slogan}</p><p className="muted footer-description">{c.footerDescription}</p></div>
       <div className="footer-links"><h2>{c.resources}</h2><a href={site.github}>GitHub</a><a href={site.license}>{c.license}</a></div>
-      <div className="footer-links"><h2>{c.contact}</h2><span className="contact-address">{site.contact}</span><p className="contact-hint">{c.contactHint}</p><a href={site.issues}>{c.issues}</a><Link href="/privacy">{c.privacy}</Link></div>
+      <div className="footer-links"><h2>{c.contact}</h2><a href={site.issues}>{c.issues}</a><Link href="/privacy">{c.privacy}</Link></div>
     </div>
-    <div className="footer-bottom"><span className="publisher-logo"><Image src="/bitcookies-words.svg" alt="BITCOOKIES" width={1445} height={410} /></span><span>© 2026 Bitcookies</span></div>
+    <div className="footer-bottom"><a className="publisher-logo" href={site.publisher}><Image src="/bitcookies-words.svg" alt="BITCOOKIES" width={1445} height={410} /></a><a href={site.publisher}>© 2026 BITCOOKIES</a></div>
   </AnimatedSection></footer>;
 }

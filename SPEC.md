@@ -17,7 +17,7 @@ Use template versions: Next.js 16.1.6, React/React DOM 19.2.4, Tailwind CSS 4.2.
 - Header contains a privacy link and a right-side GitHub repository button, followed by language/theme controls.
 - Header is transparent at the top and frosted after scrolling. The homepage logo smoothly returns to the top; the privacy-page logo navigates home.
 - Hero has a coral gradient title and diagonal blurred light. Restore entry, viewport, hover and FAQ accordion animations while respecting reduced motion.
-- Hero slogan is exactly `DO NOT plagiarism my pdf` in both languages, paired with a factual local PDF formatting/extraction-protection descriptor. Benefits are dark mode, multilingual support and no sign-up. Do not show a caption below screenshot-1.
+- Hero slogan is exactly `DO NOT PLAGIARIZE MY PDF!` in English and `别抄我的 PDF ！` in Chinese, paired with a factual local PDF formatting/extraction-protection descriptor. Benefits are dark mode, multilingual support and no sign-up. Do not show a caption below screenshot-1.
 - Version badge uses the desktop source version (currently v1.0.0) and a localized coming-soon status until release; it does not use the website package version. Document titles use ASCII ` - ` in both locales.
 - Light surfaces are neutral white/gray. Diagonal coral light has a defined core, soft glow and slow drift; reduced motion disables movement. Section labels are 16px.
 - Primary CTA uses official Microsoft Store SVG artwork and the owner-requested product link. Do not infer verified publication/installation.
@@ -26,7 +26,7 @@ Use template versions: Next.js 16.1.6, React/React DOM 19.2.4, Tailwind CSS 4.2.
 - Six factual features and three usage steps come from the content plan. Include extraction/readability/accessibility limits; do not advertise unavailable GAN.
 - Policy covers local files, configs, embedded text, device features, external services, website hosting, support and changes. Effective date is fixed at 2026-10-12.
 - Policy distinguishes offline desktop processing from Vercel website requests and discloses local theme and language storage.
-- Footer provides the slogan, Bitcookies wordmark without an introductory phrase, GitHub, desktop GPL license, masked contact, issues and privacy. Footer, FAQ and privacy display `#` instead of `@` with replacement guidance, and expose no raw mailto link.
+- Footer provides the slogan, BITCOOKIES wordmark without an introductory phrase, GitHub, desktop GPL license, issues and privacy. Use GitHub issues for support and privacy questions without email addresses or instructions. The wordmark and `© 2026 BITCOOKIES` link to https://bitcookies.nousbuild.com/.
 - No invented testimonials, user metrics, prices, partners or guaranteed protection claims.
 
 ## Acceptance

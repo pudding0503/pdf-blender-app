@@ -7,7 +7,7 @@ export const site = {
   store: "https://apps.microsoft.com/detail/9P65NBNQRGVZ",
   issues: "https://github.com/bitcookies/pdf-blender/issues",
   license: "https://github.com/bitcookies/pdf-blender/blob/main/LICENSE",
-  contact: "bitcookies#nousbuild.com",
+  publisher: "https://bitcookies.nousbuild.com/",
   // Desktop source version (Directory.Build.props), not a published release.
   appVersion: "1.0.0",
   policyDate: "2026-10-12",

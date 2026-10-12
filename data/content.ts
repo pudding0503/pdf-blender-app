@@ -3,7 +3,7 @@ import type { Locale } from "@/lib/site";
 const en = {
   nav: ["Features", "How it works", "FAQ"], menu: "Menu", close: "Close menu", skip: "Skip to content",
   theme: "Theme", themes: ["System", "Light", "Dark"],
-  releaseStatus: "Coming soon", headline: "DO NOT", headlineAccent: "plagiarism my pdf",
+  releaseStatus: "Coming soon", headline: "DO NOT", headlineAccent: "PLAGIARIZE MY PDF!",
   description: "Local PDF formatting and extraction protection.",
   facts: ["Dark mode", "Multilingual", "No sign-up"],
   homeAlt: "PDF Blender home with a PDF drop area, populated configuration slots and processing controls.",
@@ -32,15 +32,15 @@ const en = {
     ["Why does installation say ‘Uses all system resources’?", "This is Windows’ description of a desktop app. PDF Blender runs with your user permissions, does not request administrator access, and does not use your camera, microphone or location. PDF processing works offline."],
     ["What does the intensity level mean?", "It compares the impact of configs within the app, not a certified security rating. Higher levels generally have a greater effect on clarity or extraction."],
     ["Does hidden AI text stop AI tools?", "Not reliably. It adds optional passive text that tools may ignore or expose during extraction. It executes no scripts and is not access control."],
-    ["How can I get help?", "Open a GitHub issue or email bitcookies#nousbuild.com (replace # with @) with your app version and steps to reproduce. Do not post sensitive PDFs publicly."],
+    ["How can I get help?", "Open a GitHub issue with your app version and steps to reproduce. Do not post sensitive PDFs publicly."],
   ],
   finalTitle: "Prepare your next PDF for sharing.", finalDescription: "Choose a config, then review the result.",
-  slogan: "DO NOT plagiarism my pdf", footerDescription: "Local PDF formatting and extraction protection.", resources: "Resources", contact: "Contact", contactHint: "Replace # with @ to email us.", privacy: "Privacy policy", license: "App license · GPL v3", issues: "Report an issue", effective: "Effective date", back: "Back to home", contents: "On this page",
+  slogan: "DO NOT PLAGIARIZE MY PDF!", footerDescription: "Local PDF formatting and extraction protection.", resources: "Resources", contact: "Contact", privacy: "Privacy policy", license: "App license · GPL v3", issues: "Report an issue", effective: "Effective date", back: "Back to home", contents: "On this page",
 };
 const zh: typeof en = {
   nav: ["功能", "使用方法", "常见问题"], menu: "菜单", close: "关闭菜单", skip: "跳到正文",
   theme: "主题", themes: ["系统", "浅色", "深色"],
-  releaseStatus: "即将发布", headline: "DO NOT", headlineAccent: "plagiarism my pdf",
+  releaseStatus: "即将发布", headline: "别抄我的", headlineAccent: "PDF ！",
   description: "本地 PDF 整理与提取防护工具。",
   facts: ["深色模式", "多语言", "免注册"],
   homeAlt: "PDF Blender 主页，显示 PDF 拖放区域、已填充的配置槽位和处理按钮。",
@@ -69,9 +69,9 @@ const zh: typeof en = {
     ["为什么安装时提示“使用全部系统资源”？", "这是 Windows 对普通桌面应用运行方式的提示。PDF Blender 按当前用户权限运行，不请求管理员权限，也不使用摄像头、麦克风或位置服务。PDF 处理无需联网。"],
     ["强度等级是什么意思？", "它是应用内比较配置影响程度的指标，不是安全认证。通常等级越高，对清晰度、复制或机器读取的影响也越大。"],
     ["隐藏 AI 文本能阻止 AI 读取吗？", "不保证。它是可选的被动文字干扰，工具可能忽略它，也可能在提取或无障碍读取时显示它。它不会执行脚本，也不能代替访问控制。"],
-    ["遇到问题怎么反馈？", "可在 GitHub 提交问题，或发邮件到 bitcookies#nousbuild.com（将 # 替换为 @）。请描述软件版本和复现步骤，不要公开上传敏感 PDF。"],
+    ["遇到问题怎么反馈？", "可在 GitHub 提交问题。请描述软件版本和复现步骤，不要公开上传敏感 PDF。"],
   ],
   finalTitle: "让下一份 PDF 更适合分享。", finalDescription: "先选配置，再检查处理效果。",
-  slogan: "DO NOT plagiarism my pdf", footerDescription: "本地 PDF 整理与提取防护工具。", resources: "资源", contact: "联系", contactHint: "发送邮件时，请将 # 替换为 @。", privacy: "隐私政策", license: "软件许可 · GPL v3", issues: "反馈问题", effective: "生效日期", back: "返回首页", contents: "本页目录",
+  slogan: "别抄我的 PDF ！", footerDescription: "本地 PDF 整理与提取防护工具。", resources: "资源", contact: "联系", privacy: "隐私政策", license: "软件许可 · GPL v3", issues: "反馈问题", effective: "生效日期", back: "返回首页", contents: "本页目录",
 };
 export const content: Record<Locale, typeof en> = { en, zh };

@@ -34,9 +34,9 @@ The active website uses the simpler SaaS Landing Template's restrained visual sy
 - Use local runtime assets and Geist Sans from `geist/font/sans`; do not fetch Google Fonts during builds or add analytics, external embeds or upload forms.
 - Follow the selected template's visual system. Previous UCDT and Chakra/Saas UI assumptions are retired.
 - PDF Blender content should remain data-driven and use truthful Microsoft Store release information. The explicit user request authorizes the current Store badge/link; do not infer availability or installation verification from it.
-- The slogan is exactly `DO NOT plagiarism my pdf` in both locales. Keep the factual local-processing descriptor alongside it. Hero benefits are dark mode, multilingual support and no sign-up; omit the homepage screenshot caption.
+- The English slogan is exactly `DO NOT PLAGIARIZE MY PDF!`; the Chinese slogan is `别抄我的 PDF ！`. Keep the factual local-processing descriptor alongside it. Hero benefits are dark mode, multilingual support and no sign-up; omit the homepage screenshot caption.
 - `site.appVersion` is the desktop source version (currently 1.0.0), not the website package version. Show the localized coming-soon status until a release is confirmed, and update this value when desktop releases change.
-- Use ASCII ` - ` in document titles. Display contact addresses with `#` in place of `@` throughout the site; do not expose a raw mailto link. The publisher footer contains the wordmark without an introductory attribution phrase.
+- Use ASCII ` - ` in document titles. Use GitHub issues for support and privacy questions; do not display email addresses or email instructions. The publisher wordmark and uppercase copyright text both link to https://bitcookies.nousbuild.com/.
 - `public/microsoft-store-en.svg` and `public/microsoft-store-zh.svg` are official Microsoft SVG badges downloaded from get.microsoft.com. Keep original artwork and local loading.
 - Keep the template MIT notice unchanged in LICENSE (no extension). The footer links to the desktop app's separate GPL license.
 - Preserve the template's transparent-to-frosted navbar, coral gradient heading and diagonal light, soft theme transitions, smooth logo scroll-to-top and viewport animations. Do not restore the removed SaaS sections.
