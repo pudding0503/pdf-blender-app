@@ -5,7 +5,7 @@ const en = {
   theme: "Theme", themes: ["System", "Light", "Dark"],
   label: "Windows · Local processing", headline: "Keep PDFs readable.", headlineAccent: "Make extraction harder.",
   description: "Resize pages, add watermarks and make copied text harder to reuse. Your PDFs are processed on your PC, without uploads.",
-  cta: "View on GitHub", coming: "Coming to Microsoft Store", facts: ["Local processing", "No account", "English and Chinese"], platform: "For Windows 10 and 11",
+  facts: ["Local processing", "No account", "English and Chinese"], platform: "For Windows 10 and 11",
   homeCaption: "Your PDFs, your configs, your PC.", homeAlt: "PDF Blender home with a PDF drop area, populated configuration slots and processing controls.",
   featuresTitle: "Choose the PDF tools you need", featuresSubtitle: "From page formatting to copy protection, you choose what runs.",
   features: [
@@ -42,7 +42,7 @@ const zh: typeof en = {
   theme: "主题", themes: ["系统", "浅色", "深色"],
   label: "Windows · 本地处理", headline: "PDF 便于阅读，", headlineAccent: "内容更难直接提取。",
   description: "统一页面尺寸、添加水印，并通过图片化和复制混淆提高内容提取成本。处理在本机完成，无需上传 PDF。",
-  cta: "查看 GitHub 项目", coming: "Microsoft Store 版本即将推出", facts: ["本地处理", "无需账户", "中英文界面"], platform: "支持 Windows 10 / 11",
+  facts: ["本地处理", "无需账户", "中英文界面"], platform: "支持 Windows 10 / 11",
   homeCaption: "你的 PDF、你的配置，在你的电脑上处理。", homeAlt: "PDF Blender 主页，显示 PDF 拖放区域、已填充的配置槽位和处理按钮。",
   featuresTitle: "按需要组合 PDF 功能", featuresSubtitle: "从页面整理到复制防护，每项功能由你选择。",
   features: [

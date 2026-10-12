@@ -17,7 +17,7 @@ export default function Screenshots({ locale }: { locale: Locale }) {
     if (next !== null) { e.preventDefault(); setSelected(next); buttons.current[next]?.focus(); }
   }
   return <div className="config-gallery">
-    <div className="screenshot-tabs" role="tablist" aria-label={c.screensCaption}>{c.screens.map((label, i) => <button key={label} type="button" ref={el => { buttons.current[i] = el; }} role="tab" id={`screen-tab-${i}`} aria-controls={`screen-panel-${i}`} aria-selected={selected === i} tabIndex={selected === i ? 0 : -1} onClick={() => setSelected(i)} onKeyDown={e => handleKeys(e, i)}>{label}</button>)}</div>
+    <div className="screenshot-tabs" role="tablist" aria-label={c.screensCaption}>{c.screens.map((label, i) => <button key={i} type="button" ref={el => { buttons.current[i] = el; }} role="tab" id={`screen-tab-${i}`} aria-controls={`screen-panel-${i}`} aria-selected={selected === i} tabIndex={selected === i ? 0 : -1} onClick={() => setSelected(i)} onKeyDown={e => handleKeys(e, i)}>{label}</button>)}</div>
     {screenshots.map((src, i) => <div key={i} role="tabpanel" id={`screen-panel-${i}`} aria-labelledby={`screen-tab-${i}`} hidden={selected !== i} tabIndex={0}><Image className="app-screenshot" src={src} alt={c.screenAlts[i]} sizes="(max-width: 960px) 92vw, 880px" /></div>)}
     <p className="screenshot-caption">{c.screensCaption}</p>
   </div>;

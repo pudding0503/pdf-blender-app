@@ -3,18 +3,19 @@ import { useEffect, useState } from "react";
 import { Monitor, Sun, Moon } from "lucide-react";
 import { useTheme } from "next-themes";
 import { content } from "@/data/content";
-import type { Locale } from "@/lib/site";
+import { useLanguage } from "./language-provider";
 
-export default function ThemeSwitcher({ locale }: { locale: Locale }) {
+const modes = ["system", "light", "dark"] as const;
+export default function ThemeSwitcher() {
   const { theme, setTheme } = useTheme();
+  const { locale } = useLanguage();
   const [mounted, setMounted] = useState(false);
   useEffect(() => setMounted(true), []);
+  const current = mounted ? theme ?? "system" : "system";
+  const index = Math.max(0, modes.indexOf(current as typeof modes[number]));
+  const next = (index + 1) % modes.length;
   const c = content[locale];
-  const Icon = mounted && theme === "light" ? Sun : mounted && theme === "dark" ? Moon : Monitor;
-  return <label className="theme-control"><Icon size={16} aria-hidden="true" />
-    <span className="sr-only">{c.theme}</span>
-    <select aria-label={c.theme} value={mounted ? theme ?? "system" : "system"} onChange={e => setTheme(e.target.value)}>
-      {["system", "light", "dark"].map((value, i) => <option key={value} value={value}>{c.themes[i]}</option>)}
-    </select>
-  </label>;
+  const Icon = current === "light" ? Sun : current === "dark" ? Moon : Monitor;
+  const label = locale === "en" ? `Theme: ${c.themes[index]}. Switch to ${c.themes[next]}.` : `当前主题：${c.themes[index]}。切换到${c.themes[next]}。`;
+  return <button type="button" className="icon-button" aria-label={label} title={label} onClick={() => setTheme(modes[next])}><Icon size={19} aria-hidden="true" /></button>;
 }

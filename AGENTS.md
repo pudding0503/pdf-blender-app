@@ -1,7 +1,7 @@
 # PDF Blender Website Instructions
 
 ## Current Phase
-The active website uses the simpler SaaS Landing Template's restrained visual system, adapted with the supplied PDF Blender content and assets. `WEBSITE-CONTENT-PLAN.md` is the product copy reference. The Store listing is not public: use GitHub CTAs and a coming-soon note. Privacy has a fixed effective date of 2026-10-12. Do not invent claims, testimonials, prices or download links.
+The active website uses the simpler SaaS Landing Template's restrained visual system, adapted with the supplied PDF Blender content and assets. `WEBSITE-CONTENT-PLAN.md` is the product copy reference, with later user decisions taking precedence. The confirmed production origin is https://pdf-blender.vercel.app. At the user's request, primary CTAs use the official Microsoft Store SVG badge linked to product 9P65NBNQRGVZ; this does not establish that the listing is public. GitHub is the header's right-side repository button. Privacy has a fixed effective date of 2026-10-12. Do not invent claims, testimonials or prices.
 
 ## Environment
 - Use PowerShell 7 (`pwsh`) on Windows.
@@ -11,12 +11,13 @@ The active website uses the simpler SaaS Landing Template's restrained visual sy
 
 ## Architecture
 - Next.js App Router, TypeScript, Tailwind CSS 4, Radix Accordion, next-themes and Lucide.
-- `app/(en)/`: English homepage and privacy, with an English root layout.
-- `app/(zh)/zh/`: Chinese homepage and privacy, with a Chinese root layout.
-- `components/site-layout.tsx`: shared document layout, local font, providers, navbar and footer.
+- `app/page.tsx` and `app/privacy/page.tsx`: homepage and privacy at stable language-neutral URLs.
+- `app/layout.tsx`: shared document layout, local font, providers, navbar and footer.
+- `components/language-provider.tsx`: dynamic language state and browser preference persistence; switching must not reload or navigate. Update document language/title with the content.
+- `next.config.mjs`: redirects legacy /zh and /zh/privacy URLs to / and /privacy.
 - `app/providers.tsx`: next-themes provider.
 - `app/globals.css`: Tailwind 4 imports and light/dark tokens.
-- `components/`: homepage, privacy article, navbar, footer, FAQ, screenshot tabs and theme controls.
+- `components/`: homepage, privacy article, compact navbar, footer, FAQ, screenshot tabs, Store badge and icon-only preference controls.
 - `data/content.ts` and `data/privacy.json`: bilingual content.
 - `lib/site.ts`: metadata, links and policy date.
 - `components/ui/`: reusable Radix-based components.
@@ -29,7 +30,8 @@ The active website uses the simpler SaaS Landing Template's restrained visual sy
 - Screenshots and logo use static imports from assets/. `scripts/sync-assets.mjs` copies icons and wordmark into public/ before dev/build. Do not edit those copies directly.
 - Use local runtime assets and fonts; do not add analytics, external embeds or upload forms.
 - Follow the selected template's visual system. Previous UCDT and Chakra/Saas UI assumptions are retired.
-- Future PDF Blender content should remain data-driven and use truthful Microsoft Store release information. Do not hard-code an unpublished Store URL.
+- PDF Blender content should remain data-driven and use truthful Microsoft Store release information. The explicit user request authorizes the current Store badge/link; do not infer availability or installation verification from it.
+- `public/microsoft-store-en.svg` and `public/microsoft-store-zh.svg` are official Microsoft SVG badges downloaded from get.microsoft.com. Keep original artwork and local loading.
 - Keep the template MIT notice in license.txt.
 
 ## Validation and Deployment

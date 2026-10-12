@@ -2,38 +2,24 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
-import { Menu, X, Github, Languages } from "lucide-react";
-import { useState, useEffect, useRef } from "react";
+import { Github, Languages } from "lucide-react";
 import logo from "@/assets/logo.png";
 import ThemeSwitcher from "./theme-switcher";
+import { useLanguage } from "./language-provider";
 import { content } from "@/data/content";
-import { homePath, privacyPath, site, type Locale } from "@/lib/site";
+import { site } from "@/lib/site";
 
-export default function NavBar({ locale }: { locale: Locale }) {
+export default function NavBar() {
+  const { locale, toggleLanguage } = useLanguage();
   const c = content[locale];
-  const [open, setOpen] = useState(false);
-  const button = useRef<HTMLButtonElement>(null);
-  const pathname = usePathname();
-  const other = locale === "en" ? "zh" : "en";
-  const languagePath = pathname.includes("privacy") ? privacyPath(other) : homePath(other);
-  useEffect(() => { setOpen(false); }, [pathname]);
-  useEffect(() => {
-    const close = (event: KeyboardEvent) => { if (event.key === "Escape" && open) { setOpen(false); button.current?.focus(); } };
-    window.addEventListener("keydown", close);
-    return () => window.removeEventListener("keydown", close);
-  }, [open]);
-  const links = c.nav.map((label, i) => <a key={label} href={`${homePath(locale)}#${["features", "how-it-works", "faq"][i]}`} onClick={() => setOpen(false)}>{label}</a>);
-  return <header className="site-header">
-    <div className="container header-inner">
-      <Link href={homePath(locale)} className="brand"><Image src={logo} alt="" width={36} height={36} /> <span>PDF Blender</span></Link>
-      <nav className="desktop-nav" aria-label={locale === "en" ? "Main navigation" : "主导航"}>{links}<a href={site.github}>GitHub</a></nav>
-      <div className="header-controls">
-        <Link className="language-link" href={languagePath} hrefLang={other === "zh" ? "zh-CN" : "en"} aria-label={other === "zh" ? "切换到中文" : "Switch to English"}><Languages size={16} aria-hidden="true" /><span>{other === "zh" ? "中文" : "EN"}</span></Link>
-        <ThemeSwitcher locale={locale} />
-        <button ref={button} type="button" className="menu-button" aria-label={open ? c.close : c.menu} aria-expanded={open} aria-controls="mobile-nav" onClick={() => setOpen(!open)}>{open ? <X size={20} /> : <Menu size={20} />}</button>
-      </div>
+  const languageLabel = locale === "en" ? "切换到中文" : "Switch to English";
+  return <header className="site-header"><div className="container header-inner">
+    <Link href="/" className="brand"><Image src={logo} alt="" width={36} height={36} /><span>PDF Blender</span></Link>
+    <nav className="header-nav" aria-label={locale === "en" ? "Main navigation" : "主导航"}><Link href="/privacy">{c.privacy}</Link></nav>
+    <div className="header-controls">
+      <a className="github-button" href={site.github} target="_blank" rel="noopener noreferrer" aria-label={locale === "en" ? "PDF Blender on GitHub (opens in a new tab)" : "PDF Blender GitHub 仓库（在新标签页打开）"}><Github size={18} aria-hidden="true" /><span>GitHub</span></a>
+      <button type="button" className="icon-button" aria-label={languageLabel} title={languageLabel} onClick={toggleLanguage}><Languages size={19} aria-hidden="true" /></button>
+      <ThemeSwitcher />
     </div>
-    <nav id="mobile-nav" className="mobile-nav container" hidden={!open} aria-label={locale === "en" ? "Mobile navigation" : "移动导航"}>{links}<a href={site.github}><Github size={16} aria-hidden="true" /> GitHub</a></nav>
-  </header>;
+  </div></header>;
 }

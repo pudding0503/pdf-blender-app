@@ -10,18 +10,19 @@ Keep Next.js 14.2.5, React/React DOM 18.3.1 and pnpm 10.32.1. Use App Router, Ty
 
 ## Behavior
 
-- Routes: `/`, `/zh`, `/privacy`, `/zh/privacy`.
-- Correct server-rendered document language and localized canonical/alternate metadata.
-- Theme follows the system by default and offers persistent light/dark overrides.
-- Language switch keeps the visitor on the equivalent homepage or privacy page.
-- GitHub is the current primary CTA. Show coming-to-Store text without an unpublished install link.
+- Routes: `/` and `/privacy`, with dynamic bilingual content; redirect old /zh URLs to corresponding current pages.
+- Confirmed origin: https://pdf-blender.vercel.app. Canonical and sitemap contain language-neutral URLs. English is the server-rendered default; document language/title/description update on switching.
+- Theme follows the system by default; an icon button cycles system/light/dark without reloading.
+- An icon-only language button updates all content in place, preserving URL, page state and scroll position. Store language locally and preserve it across route navigation.
+- Header contains a privacy link and a right-side GitHub repository button, followed by language/theme controls.
+- Primary CTA uses official Microsoft Store SVG artwork and the owner-requested product link. Do not infer verified publication/installation.
 - Homepage displays supplied screenshot-1, then an accessible manual tab selector for screenshot-2 through screenshot-4.
 - Six factual features and three usage steps come from the content plan. Include extraction/readability/accessibility limits; do not advertise unavailable GAN.
 - Policy covers local files, configs, embedded text, device features, external services, website hosting, support and changes. Effective date is fixed at 2026-10-12.
-- Policy distinguishes offline desktop processing from Vercel website requests and discloses local theme storage.
+- Policy distinguishes offline desktop processing from Vercel website requests and discloses local theme and language storage.
 - Footer provides Bitcookies branding, GitHub, desktop GPL license, email, issues and privacy.
 - No invented testimonials, user metrics, prices, partners or guaranteed protection claims.
 
 ## Acceptance
 
-Run `pnpm typecheck`, `pnpm lint` and `pnpm build`. Verify all four routes, icons, screenshots, sharing image, sitemap and robots responses. Inspect rendered metadata, localized links and removal of inherited template content/scripts. Production hostname, Store availability and platform hosting settings remain publication-time checks.
+Run `pnpm typecheck`, `pnpm lint` and `pnpm build`. Verify both routes, legacy redirects, icons, screenshots, official Store badges, sharing image, sitemap and robots responses. Check dynamic language/theme switching without reload, preference persistence, page state preservation and responsive navigation. Store availability and platform hosting settings remain publication-time checks.
