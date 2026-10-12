@@ -1,0 +1,48 @@
+# Dependencies and package-manager caches
+node_modules/
+.pnpm-store/
+.npm/
+
+# Next.js builds and generated TypeScript files
+.next/
+out/
+dist/
+.turbo/
+*.tsbuildinfo
+next-env.d.ts
+
+# Files copied from assets/ by scripts/sync-assets.mjs
+/public/favicon.ico
+/public/apple-touch-icon.png
+/public/bitcookies-words.svg
+
+# Local environment and deployment state
+.env*
+!.env.example
+.vercel/
+
+# Temporary template extraction and source archives
+/.template-staging/
+/.template2-staging/
+/assets/*.zip
+
+# Local agent/editor state (keep shared AGENTS.md)
+/.codex/
+/.agents/
+.idea/
+*.swp
+*.swo
+
+# Test output and logs
+coverage/
+playwright-report/
+test-results/
+*.log
+
+# Operating-system files
+.DS_Store
+._*
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
