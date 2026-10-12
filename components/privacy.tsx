@@ -7,8 +7,8 @@ import { site } from "@/lib/site";
 import { useLanguage } from "./language-provider";
 
 function PolicyText({ text }: { text: string }) {
-  const parts = text.split(/(bitcookies@nousbuild\.com|\[.*?\]\(https:\/\/vercel\.com\/legal\/privacy-policy\))/g);
-  return <>{parts.map((part, i) => part === site.email ? <a key={i} href={`mailto:${site.email}`}>{part}</a> : part.startsWith("[") && part.endsWith("(https://vercel.com/legal/privacy-policy)") ? <a key={i} href="https://vercel.com/legal/privacy-policy">{part.slice(1, part.indexOf("]"))}</a> : part.replace(/\*\*/g, ""))}</>;
+  const parts = text.split(/(\[.*?\]\(https:\/\/vercel\.com\/legal\/privacy-policy\))/g);
+  return <>{parts.map((part, i) => part.startsWith("[") && part.endsWith("(https://vercel.com/legal/privacy-policy)") ? <a key={i} href="https://vercel.com/legal/privacy-policy">{part.slice(1, part.indexOf("]"))}</a> : part.replace(/\*\*/g, ""))}</>;
 }
 export default function Privacy() {
   const { locale } = useLanguage();

@@ -34,6 +34,10 @@ The header contains only a privacy link, GitHub button, EN/CH language mark and 
 
 The hero restores the template's gradient heading and diagonal light in coral. Sections enter as they scroll into view, cards respond to hover and Store badges scale gently. All four screenshots have square corners. The three configuration screenshots preload locally and crossfade only after decoding; pending loads preserve the current image and show delayed feedback. Initial loads use a shimmer placeholder, and failures offer retry. Arrow keys, Home and End navigate tabs. Motion respects `prefers-reduced-motion`.
 
+Both locales use the slogan `DO NOT plagiarism my pdf`, with a factual local PDF formatting/extraction-protection descriptor. The hero benefits are dark mode, multilingual support and no sign-up. There is no caption beneath the homepage screenshot. Light surfaces use neutral white/gray with layered coral diagonal light that drifts slowly. Section labels are enlarged to 16px. The footer keeps the Bitcookies wordmark without an introductory attribution phrase.
+
+The version badge is `v1.0.0 · Coming soon` (localized in Chinese), based on the desktop app's `Directory.Build.props`, not this website's package version or a verified published release. Update `site.appVersion` in `lib/site.ts` when the desktop version changes; no external API is queried at runtime. Page titles use ASCII ` - ` in both languages. Contact addresses use `bitcookies#nousbuild.com` in the footer, FAQ and privacy policy, with instructions to replace `#` with `@`; no raw mailto link is rendered.
+
 - `components/home.tsx`: hero, six features, three steps, screenshots, FAQ and final CTA.
 - `components/privacy.tsx`: privacy article with contents links.
 - `app/layout.tsx`: shared font, providers, header and footer.
