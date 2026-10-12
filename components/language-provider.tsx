@@ -1,23 +1,34 @@
 "use client";
 
-import { createContext, useContext, useEffect, useState } from "react";
+import { createContext, useContext, useEffect, useSyncExternalStore } from "react";
 import { usePathname } from "next/navigation";
 import { pageMetadata, type Locale } from "@/lib/site";
 
 const LanguageContext = createContext<{ locale: Locale; toggleLanguage: () => void } | null>(null);
 const storageKey = "pdf-blender-language";
+let fallbackLocale: Locale = "en";
+function languageSnapshot(): Locale {
+  try {
+    const saved = localStorage.getItem(storageKey);
+    return saved === "en" || saved === "zh" ? saved : fallbackLocale;
+  } catch { return fallbackLocale; }
+}
+function subscribeLanguage(callback: () => void) {
+  const onStorage = (event: StorageEvent) => {
+    if (event.key === storageKey || event.key === null) callback();
+  };
+  window.addEventListener("storage", onStorage);
+  window.addEventListener(storageKey, callback);
+  return () => {
+    window.removeEventListener("storage", onStorage);
+    window.removeEventListener(storageKey, callback);
+  };
+}
 
 export function LanguageProvider({ children }: { children: React.ReactNode }) {
-  const [locale, setLocale] = useState<Locale>("en");
+  // An English server snapshot keeps hydration stable; the browser reads its saved preference.
+  const locale = useSyncExternalStore(subscribeLanguage, languageSnapshot, () => "en" as Locale);
   const pathname = usePathname();
-
-  useEffect(() => {
-    // Keep the server and initial client render identical; storage may be unavailable.
-    try {
-      const saved = localStorage.getItem(storageKey);
-      if (saved === "en" || saved === "zh") setLocale(saved);
-    } catch { /* The language switch still works without persistent storage. */ }
-  }, []);
 
   useEffect(() => {
     document.documentElement.lang = locale === "zh" ? "zh-CN" : "en";
@@ -28,8 +39,9 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
 
   function toggleLanguage() {
     const next = locale === "en" ? "zh" : "en";
-    setLocale(next);
+    fallbackLocale = next;
     try { localStorage.setItem(storageKey, next); } catch { /* Optional persistence. */ }
+    window.dispatchEvent(new Event(storageKey));
   }
 
   return <LanguageContext.Provider value={{ locale, toggleLanguage }}>{children}</LanguageContext.Provider>;

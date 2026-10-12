@@ -5,19 +5,22 @@ The active website uses the simpler SaaS Landing Template's restrained visual sy
 
 ## Environment
 - Use PowerShell 7 (`pwsh`) on Windows.
-- Use pnpm for this project. Next.js is pinned to 14.2.5, React/React DOM to 18.3.1, and pnpm to 10.32.1 to match ucdt-app.
+- Use pnpm 10.32.1. Match the reference template: Next.js 16.1.6, React/React DOM 19.2.4, Tailwind CSS 4.2.1, TypeScript 5.9.2 and ESLint 9.39.3. Node.js 20.9+ is required.
 - Check installed tools before installing or upgrading them.
 - Use the existing shared pnpm store; do not create a store directory inside this repository.
 
 ## Architecture
-- Next.js App Router, TypeScript, Tailwind CSS 4, Radix Accordion, next-themes and Lucide.
+- Next.js App Router, TypeScript, Tailwind CSS 4, Radix Accordion, next-themes, Lucide and Framer Motion 12.23.13. Motion's internal dependencies are pinned to the template lockfile versions via pnpm overrides.
 - `app/page.tsx` and `app/privacy/page.tsx`: homepage and privacy at stable language-neutral URLs.
 - `app/layout.tsx`: shared document layout, local font, providers, navbar and footer.
 - `components/language-provider.tsx`: dynamic language state and browser preference persistence; switching must not reload or navigate. Update document language/title with the content.
 - `next.config.mjs`: redirects legacy /zh and /zh/privacy URLs to / and /privacy.
 - `app/providers.tsx`: next-themes provider.
 - `app/globals.css`: Tailwind 4 imports and light/dark tokens.
-- `components/`: homepage, privacy article, compact navbar, footer, FAQ, screenshot tabs, Store badge and icon-only preference controls.
+- `components/`: homepage, privacy article, compact navbar, footer, FAQ, screenshot tabs, Store badge and preference controls. Language uses an EN/CH mark; theme uses animated icons. Language state uses a browser storage subscription with an English server snapshot.
+- `components/animated-section.tsx`: viewport entry animations. Respect reduced motion and keep component keys stable across language changes.
+- `components/screenshot-frame.tsx` and `components/screenshots.tsx`: rectangular images with stable aspect ratios, decode-before-display, loading placeholders, crossfades and retry states. Keep the current image visible while another loads.
+- `eslint.config.mjs`: ESLint 9 flat config; use `eslint .`, since Next.js 16 removed `next lint`.
 - `data/content.ts` and `data/privacy.json`: bilingual content.
 - `lib/site.ts`: metadata, links and policy date.
 - `components/ui/`: reusable Radix-based components.
@@ -26,13 +29,14 @@ The active website uses the simpler SaaS Landing Template's restrained visual sy
 - The template has no login/signup routes or authentication backend.
 
 ## Assets and Content
-- Preserve every existing file in assets/. The user manages replacements there; old template archives are no longer present.
+- Preserve every existing file in assets/. The user manages replacements there; the template ZIP is a local reference ignored by Git.
 - Screenshots and logo use static imports from assets/. `scripts/sync-assets.mjs` copies icons and wordmark into public/ before dev/build. Do not edit those copies directly.
-- Use local runtime assets and fonts; do not add analytics, external embeds or upload forms.
+- Use local runtime assets and Geist Sans from `geist/font/sans`; do not fetch Google Fonts during builds or add analytics, external embeds or upload forms.
 - Follow the selected template's visual system. Previous UCDT and Chakra/Saas UI assumptions are retired.
 - PDF Blender content should remain data-driven and use truthful Microsoft Store release information. The explicit user request authorizes the current Store badge/link; do not infer availability or installation verification from it.
 - `public/microsoft-store-en.svg` and `public/microsoft-store-zh.svg` are official Microsoft SVG badges downloaded from get.microsoft.com. Keep original artwork and local loading.
-- Keep the template MIT notice in license.txt.
+- Keep the template MIT notice unchanged in LICENSE (no extension). The footer links to the desktop app's separate GPL license.
+- Preserve the template's transparent-to-frosted navbar, coral gradient heading and diagonal light, soft theme transitions, smooth logo scroll-to-top and viewport animations. Do not restore the removed SaaS sections.
 
 ## Validation and Deployment
 - Run pnpm typecheck, pnpm lint, and pnpm build before declaring the template ready.

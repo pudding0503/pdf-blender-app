@@ -19,7 +19,7 @@ pnpm build
 pnpm start
 ```
 
-Next.js 14.2.5, React/React DOM 18.3.1 and pnpm 10.32.1 match the neighboring ucdt-app. These are project dependencies, not global Next.js or React installations. Tailwind CSS 4, Radix Accordion, Lucide and next-themes supply the UI. Inter Variable is bundled locally; builds do not fetch Google Fonts.
+Next.js 16.1.6, React/React DOM 19.2.4, Tailwind CSS 4.2.1 and Framer Motion 12.23.13 match the reference template, with pnpm 10.32.1. Node.js 20.9+ is required. These are project dependencies, not global Next.js or React installations. Geist Sans is bundled locally via `geist/font/sans`; builds do not fetch Google Fonts. ESLint 9 uses `eslint.config.mjs` and `eslint .`, replacing the removed `next lint`. Motion's internal dependencies are pinned to the template lockfile versions to avoid incompatible newer resolutions.
 
 ## Pages and content
 
@@ -30,7 +30,9 @@ Next.js 14.2.5, React/React DOM 18.3.1 and pnpm 10.32.1 match the neighboring uc
 
 Language switching updates the current page in place without a reload or URL change. The browser saves the selected language locally; English is the server-rendered default. The document language, title and description update with the displayed content. The root provider persists across homepage/privacy navigation. Legacy `/zh` and `/zh/privacy` URLs redirect to `/` and `/privacy`.
 
-The header contains only a privacy link, GitHub button and icon-only language/theme buttons. The theme button cycles system (default), light and dark; its accessible label and tooltip identify the current and next modes. Privacy uses the fixed effective date 2026-10-12. The policy discloses local theme and language storage.
+The header contains only a privacy link, GitHub button, EN/CH language mark and icon-only theme button. It is transparent at the top and frosted after scrolling. Clicking the homepage logo smoothly returns to the top; on privacy it navigates home. The theme button cycles system (default), light and dark with soft color transitions and rotating/crossfading icons. Accessible labels and tooltips identify the controls. Privacy uses the fixed effective date 2026-10-12 and discloses local theme and language storage.
+
+The hero restores the template's gradient heading and diagonal light in coral. Sections enter as they scroll into view, cards respond to hover and Store badges scale gently. All four screenshots have square corners. The three configuration screenshots preload locally and crossfade only after decoding; pending loads preserve the current image and show delayed feedback. Initial loads use a shimmer placeholder, and failures offer retry. Arrow keys, Home and End navigate tabs. Motion respects `prefers-reduced-motion`.
 
 - `components/home.tsx`: hero, six features, three steps, screenshots, FAQ and final CTA.
 - `components/privacy.tsx`: privacy article with contents links.
@@ -60,4 +62,4 @@ Use `https://pdf-blender.vercel.app/privacy` for the Microsoft Store privacy URL
 
 ## Attribution
 
-The visual baseline is [SaaS Landing Template](https://github.com/gonzalochale/saas-landing-template), by Gonzalo Chalé, under MIT. Its original notice remains in `license.txt`. The desktop app has a separate GPL v3 license, linked in the website footer. The older template archives are no longer in the user-managed assets folder.
+The visual baseline is [SaaS Landing Template](https://github.com/gonzalochale/saas-landing-template), by Gonzalo Chalé, under MIT. Its original notice remains unchanged in `LICENSE`, with no extension. The desktop app has a separate GPL v3 license, linked in the website footer. The reference ZIP in assets/ is preserved locally and ignored by Git.
