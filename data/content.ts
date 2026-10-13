@@ -3,8 +3,8 @@ import type { Locale } from "@/lib/site";
 const en = {
   nav: ["Features", "How it works", "FAQ"], menu: "Menu", close: "Close menu", skip: "Skip to content",
   theme: "Theme", themes: ["System", "Light", "Dark"],
-  releaseStatus: "Coming soon", headline: "DO NOT", headlineAccent: "PLAGIARIZE MY PDF!",
-  description: "Local PDF formatting and extraction protection.",
+  releaseStatus: "Coming soon", headline: "Keep PDFs readable.", headlineAccent: "Make extraction harder.",
+  description: "DO NOT PLAGIARIZE MY PDF!",
   facts: ["Dark mode", "Multilingual", "No sign-up"],
   homeAlt: "PDF Blender home with a PDF drop area, populated configuration slots and processing controls.",
   featuresTitle: "Choose the PDF tools you need", featuresSubtitle: "From page formatting to copy protection, you choose what runs.",
@@ -40,8 +40,8 @@ const en = {
 const zh: typeof en = {
   nav: ["功能", "使用方法", "常见问题"], menu: "菜单", close: "关闭菜单", skip: "跳到正文",
   theme: "主题", themes: ["系统", "浅色", "深色"],
-  releaseStatus: "即将发布", headline: "别抄我的", headlineAccent: "PDF ！",
-  description: "本地 PDF 整理与提取防护工具。",
+  releaseStatus: "即将发布", headline: "PDF 便于阅读，", headlineAccent: "内容更难直接提取。",
+  description: "别抄我的 PDF ！",
   facts: ["深色模式", "多语言", "免注册"],
   homeAlt: "PDF Blender 主页，显示 PDF 拖放区域、已填充的配置槽位和处理按钮。",
   featuresTitle: "按需要组合 PDF 功能", featuresSubtitle: "从页面整理到复制防护，每项功能由你选择。",

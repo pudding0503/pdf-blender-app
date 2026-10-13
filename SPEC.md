@@ -17,11 +17,11 @@ Use template versions: Next.js 16.1.6, React/React DOM 19.2.4, Tailwind CSS 4.2.
 - Header contains a privacy link and a right-side GitHub repository button, followed by language/theme controls.
 - Header is transparent at the top and frosted after scrolling. The homepage logo smoothly returns to the top; the privacy-page logo navigates home.
 - Hero has a coral gradient title and diagonal blurred light. Restore entry, viewport, hover and FAQ accordion animations while respecting reduced motion.
-- Hero slogan is exactly `DO NOT PLAGIARIZE MY PDF!` in English and `别抄我的 PDF ！` in Chinese, paired with a factual local PDF formatting/extraction-protection descriptor. Benefits are dark mode, multilingual support and no sign-up. Do not show a caption below screenshot-1.
+- Hero heading is `Keep PDFs readable. / Make extraction harder.` in English and `PDF 便于阅读，/ 内容更难直接提取。` in Chinese. Its smaller supporting line is exactly `DO NOT PLAGIARIZE MY PDF!` or `别抄我的 PDF ！`; the factual local PDF formatting/extraction-protection descriptor remains in the footer. Benefits are dark mode, multilingual support and no sign-up. Do not show a caption below screenshot-1.
 - Version badge uses the desktop source version (currently v1.0.0) and a localized coming-soon status until release; it does not use the website package version. Document titles use ASCII ` - ` in both locales.
 - Light surfaces are neutral white/gray. Diagonal coral light has a defined core, soft glow and slow drift; reduced motion disables movement. Section labels are 16px.
 - Primary CTA uses official Microsoft Store SVG artwork and the owner-requested product link. Do not infer verified publication/installation.
-- Homepage displays supplied screenshot-1, then an accessible manual tab selector for screenshot-2 through screenshot-4.
+- Homepage displays screenshot-1, then an accessible manual tab selector for screenshot-2 through screenshot-4. Use the eight `screenshot-{1..4}-{light,dark}.jpg` assets matching the resolved website theme, including system theme changes. Preserve the selected tab and current image while the target variant loads.
 - All screenshots have square corners and reserved aspect ratios. Preload the configuration screenshots and decode before crossfading. Keep the current image on slow/failed loads, show delayed loading feedback and allow retry. Rapid selection uses the last requested tab; keyboard arrows/Home/End remain supported.
 - Six factual features and three usage steps come from the content plan. Include extraction/readability/accessibility limits; do not advertise unavailable GAN.
 - Policy covers local files, configs, embedded text, device features, external services, website hosting, support and changes. Effective date is fixed at 2026-10-12.

@@ -1,7 +1,8 @@
 "use client";
 import { motion, useReducedMotion } from "framer-motion";
 import { Check, ScanLine, Type, Layers, Sparkles, Copyright, SlidersHorizontal, Package } from "lucide-react";
-import screenshot from "@/assets/screenshot-1.webp";
+import { useTheme } from "next-themes";
+import { homeScreenshots } from "@/data/screenshots";
 import { content } from "@/data/content";
 import { site } from "@/lib/site";
 import { useLanguage } from "./language-provider";
@@ -14,6 +15,7 @@ import AnimatedSection from "./animated-section";
 const icons = [ScanLine, Type, Layers, Sparkles, Copyright, SlidersHorizontal];
 export default function Home() {
   const { locale } = useLanguage();
+  const { resolvedTheme } = useTheme();
   const c = content[locale];
   const reduced = useReducedMotion();
   return <main id="main">
@@ -26,7 +28,7 @@ export default function Home() {
       <div className="hero-actions"><StoreButton /></div>
       <ul className="hero-facts">{c.facts.map(fact => <li key={fact}><Check size={14} aria-hidden="true" />{fact}</li>)}</ul>
       </motion.div>
-      <AnimatedSection delay={0.15}><figure className="hero-figure"><ScreenshotFrame src={screenshot} alt={c.homeAlt} locale={locale} /></figure></AnimatedSection>
+      <AnimatedSection delay={0.15}><figure className="hero-figure"><ScreenshotFrame sources={homeScreenshots} selected={resolvedTheme === "dark" ? 1 : 0} alts={[c.homeAlt, c.homeAlt]} locale={locale} /></figure></AnimatedSection>
     </section>
     <section id="features" className="section container"><div className="section-heading"><p className="section-kicker">{c.nav[0]}</p><h2>{c.featuresTitle}</h2><p>{c.featuresSubtitle}</p></div>
       <div className="feature-grid">{c.features.map(([title, description], i) => { const Icon = icons[i]; return <AnimatedSection key={i} delay={(i % 3) * 0.06} className="feature-reveal"><article className="feature-card"><span className="feature-icon"><Icon size={22} aria-hidden="true" /></span><h3>{title}</h3><p>{description}</p></article></AnimatedSection>; })}</div>

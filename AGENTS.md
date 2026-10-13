@@ -20,6 +20,7 @@ The active website uses the simpler SaaS Landing Template's restrained visual sy
 - `components/`: homepage, privacy article, compact navbar, footer, FAQ, screenshot tabs, Store badge and preference controls. Language uses an EN/CH mark; theme uses animated icons. Language state uses a browser storage subscription with an English server snapshot.
 - `components/animated-section.tsx`: viewport entry animations. Respect reduced motion and keep component keys stable across language changes.
 - `components/screenshot-frame.tsx` and `components/screenshots.tsx`: rectangular images with stable aspect ratios, decode-before-display, loading placeholders, crossfades and retry states. Keep the current image visible while another loads.
+- `data/screenshots.ts` is the single import map for `screenshot-{1..4}-{light,dark}.jpg`. Hero and gallery select the matching resolved theme variant without resetting gallery state.
 - `eslint.config.mjs`: ESLint 9 flat config; use `eslint .`, since Next.js 16 removed `next lint`.
 - `data/content.ts` and `data/privacy.json`: bilingual content.
 - `lib/site.ts`: metadata, links and policy date.
@@ -30,11 +31,11 @@ The active website uses the simpler SaaS Landing Template's restrained visual sy
 
 ## Assets and Content
 - Preserve every existing file in assets/. The user manages replacements there; the template ZIP is a local reference ignored by Git.
-- Screenshots and logo use static imports from assets/. `scripts/sync-assets.mjs` copies icons and wordmark into public/ before dev/build. Do not edit those copies directly.
+- Screenshots and logo use static imports from assets/. `data/screenshots.ts` imports the eight light/dark JPG variants; match the resolved website theme without resetting the selected gallery tab. ScreenshotFrame shares decoding, crossfade, delayed feedback and retry logic across hero and gallery. `scripts/sync-assets.mjs` copies icons and wordmark into public/ before dev/build. Do not edit those copies directly.
 - Use local runtime assets and Geist Sans from `geist/font/sans`; do not fetch Google Fonts during builds or add analytics, external embeds or upload forms.
 - Follow the selected template's visual system. Previous UCDT and Chakra/Saas UI assumptions are retired.
 - PDF Blender content should remain data-driven and use truthful Microsoft Store release information. The explicit user request authorizes the current Store badge/link; do not infer availability or installation verification from it.
-- The English slogan is exactly `DO NOT PLAGIARIZE MY PDF!`; the Chinese slogan is `别抄我的 PDF ！`. Keep the factual local-processing descriptor alongside it. Hero benefits are dark mode, multilingual support and no sign-up; omit the homepage screenshot caption.
+- The hero headline is `Keep PDFs readable. / Make extraction harder.` in English and `PDF 便于阅读，/ 内容更难直接提取。` in Chinese. The smaller line below it is exactly `DO NOT PLAGIARIZE MY PDF!` or `别抄我的 PDF ！`. Keep the factual local-processing descriptor in the footer. Hero benefits are dark mode, multilingual support and no sign-up; omit the homepage screenshot caption.
 - `site.appVersion` is the desktop source version (currently 1.0.0), not the website package version. Show the localized coming-soon status until a release is confirmed, and update this value when desktop releases change.
 - Use ASCII ` - ` in document titles. Use GitHub issues for support and privacy questions; do not display email addresses or email instructions. The publisher wordmark and uppercase copyright text both link to https://bitcookies.nousbuild.com/.
 - `public/microsoft-store-en.svg` and `public/microsoft-store-zh.svg` are official Microsoft SVG badges downloaded from get.microsoft.com. Keep original artwork and local loading.
