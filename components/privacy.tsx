@@ -7,10 +7,12 @@ import { site } from "@/lib/site";
 import { useLanguage } from "./language-provider";
 
 function PolicyText({ text }: { text: string }) {
+  const { locale } = useLanguage();
+  const newTab = locale === "en" ? "(opens in a new tab)" : "（在新标签页打开）";
   const parts = text.split(/(\[.*?\]\(https:\/\/(?:vercel\.com\/legal\/privacy-policy|github\.com\/bitcookies\/pdf-blender\/issues)\))/g);
   return <>{parts.map((part, i) => {
     const link = part.match(/^\[(.*?)\]\((https:\/\/.*?)\)$/);
-    return link ? <a key={i} href={link[2]}>{link[1]}</a> : part.replace(/\*\*/g, "");
+    return link ? <a key={i} href={link[2]} target="_blank" rel="noopener noreferrer" aria-label={`${link[1]} ${newTab}`}>{link[1]}</a> : part.replace(/\*\*/g, "");
   })}</>;
 }
 export default function Privacy() {

@@ -18,7 +18,7 @@ Use template versions: Next.js 16.1.6, React/React DOM 19.2.4, Tailwind CSS 4.2.
 - Header is transparent at the top and frosted after scrolling. The homepage logo smoothly returns to the top; the privacy-page logo navigates home.
 - Hero has a coral gradient title and diagonal blurred light. Restore entry, viewport, hover and FAQ accordion animations while respecting reduced motion.
 - Hero heading is `Keep PDFs readable. / Make extraction harder.` in English and `PDF 便于阅读，/ 内容更难直接提取。` in Chinese. Its smaller supporting line is exactly `DO NOT PLAGIARIZE MY PDF!` or `别抄我的 PDF ！`; the factual local PDF formatting/extraction-protection descriptor remains in the footer. Benefits are dark mode, multilingual support and no sign-up. Do not show a caption below screenshot-1.
-- Version badge uses the desktop source version (currently v1.0.0) and a localized coming-soon status until release; it does not use the website package version. Document titles use ASCII ` - ` in both locales.
+- Website package and desktop source versions are aligned at 1.0.0 for release preparation. The version badge uses site.appVersion and a localized coming-soon status until release. Document titles use ASCII ` - ` in both locales.
 - Light surfaces are neutral white/gray. Diagonal coral light has a defined core, soft glow and slow drift; reduced motion disables movement. Section labels are 16px.
 - Primary CTA uses official Microsoft Store SVG artwork and the owner-requested product link. Do not infer verified publication/installation.
 - Homepage displays screenshot-1, then an accessible manual tab selector for screenshot-2 through screenshot-4. Use the eight `screenshot-{1..4}-{light,dark}.jpg` assets matching the resolved website theme, including system theme changes. Preserve the selected tab and current image while the target variant loads.
@@ -27,6 +27,7 @@ Use template versions: Next.js 16.1.6, React/React DOM 19.2.4, Tailwind CSS 4.2.
 - Policy covers local files, configs, embedded text, device features, external services, website hosting, support and changes. Effective date is fixed at 2026-10-12.
 - Policy distinguishes offline desktop processing from Vercel website requests and discloses local theme and language storage.
 - Footer provides the slogan, BITCOOKIES wordmark without an introductory phrase, GitHub, desktop GPL license, issues and privacy. Use GitHub issues for support and privacy questions without email addresses or instructions. The wordmark and `© 2026 BITCOOKIES` link to https://bitcookies.nousbuild.com/.
+- PWA metadata uses generated 192px/512px logo icons and the Apple icon. The production-only service worker caches static assets first, pages from the network first, falls back to cached pages or a branded bilingual offline page, and removes only old PDF Blender versioned caches on immediate activation. Cache full HTML and loaded local resources after first visits and App Router transitions. Registration and HTTP headers bypass stale worker caching; keep the worker cache version aligned with the website release.
 - No invented testimonials, user metrics, prices, partners or guaranteed protection claims.
 
 ## Acceptance

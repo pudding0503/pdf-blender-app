@@ -35,6 +35,12 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
     const metadata = pageMetadata(locale, pathname === "/privacy");
     document.title = metadata.title as string;
     document.querySelector('meta[name="description"]')?.setAttribute("content", metadata.description ?? "");
+    document.querySelector('meta[property="og:title"]')?.setAttribute("content", metadata.title as string);
+    document.querySelector('meta[property="og:description"]')?.setAttribute("content", metadata.description ?? "");
+    document.querySelector('meta[property="og:locale"]')?.setAttribute("content", locale === "zh" ? "zh_CN" : "en_US");
+    document.querySelectorAll('meta[property="og:locale:alternate"]').forEach(element => element.setAttribute("content", locale === "zh" ? "en_US" : "zh_CN"));
+    document.querySelector('meta[name="twitter:title"]')?.setAttribute("content", metadata.title as string);
+    document.querySelector('meta[name="twitter:description"]')?.setAttribute("content", metadata.description ?? "");
   }, [locale, pathname]);
 
   function toggleLanguage() {

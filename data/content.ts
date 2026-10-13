@@ -1,8 +1,8 @@
 import type { Locale } from "@/lib/site";
 
 const en = {
-  nav: ["Features", "How it works", "FAQ"], menu: "Menu", close: "Close menu", skip: "Skip to content",
-  theme: "Theme", themes: ["System", "Light", "Dark"],
+  nav: ["Features", "How it works", "FAQ"], skip: "Skip to content",
+  themes: ["System", "Light", "Dark"],
   releaseStatus: "Coming soon", headline: "Keep PDFs readable.", headlineAccent: "Make extraction harder.",
   description: "DO NOT PLAGIARIZE MY PDF!",
   facts: ["Dark mode", "Multilingual", "No sign-up"],
@@ -38,8 +38,8 @@ const en = {
   slogan: "DO NOT PLAGIARIZE MY PDF!", footerDescription: "Local PDF formatting and extraction protection.", resources: "Resources", contact: "Contact", privacy: "Privacy policy", license: "App license · GPL v3", issues: "Report an issue", effective: "Effective date", back: "Back to home", contents: "On this page",
 };
 const zh: typeof en = {
-  nav: ["功能", "使用方法", "常见问题"], menu: "菜单", close: "关闭菜单", skip: "跳到正文",
-  theme: "主题", themes: ["系统", "浅色", "深色"],
+  nav: ["功能", "使用方法", "常见问题"], skip: "跳到正文",
+  themes: ["系统", "浅色", "深色"],
   releaseStatus: "即将发布", headline: "PDF 便于阅读，", headlineAccent: "内容更难直接提取。",
   description: "别抄我的 PDF ！",
   facts: ["深色模式", "多语言", "免注册"],

@@ -1,6 +1,6 @@
 {
   "name": "pdf-blender-app",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "private": true,
   "scripts": {
     "assets:sync": "node scripts/sync-assets.mjs",

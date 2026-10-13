@@ -26,6 +26,7 @@ The active website uses the simpler SaaS Landing Template's restrained visual sy
 - `lib/site.ts`: metadata, links and policy date.
 - `components/ui/`: reusable Radix-based components.
 - `lib/utils.ts`: class-name merging helpers.
+- `app/manifest.ts`, `components/service-worker-register.tsx`, `public/sw.js` and `public/offline.html`: installable PWA metadata, registration, versioned cache behavior and offline fallback.
 - `components.json`: shadcn-compatible component configuration.
 - The template has no login/signup routes or authentication backend.
 
@@ -36,7 +37,7 @@ The active website uses the simpler SaaS Landing Template's restrained visual sy
 - Follow the selected template's visual system. Previous UCDT and Chakra/Saas UI assumptions are retired.
 - PDF Blender content should remain data-driven and use truthful Microsoft Store release information. The explicit user request authorizes the current Store badge/link; do not infer availability or installation verification from it.
 - The hero headline is `Keep PDFs readable. / Make extraction harder.` in English and `PDF 便于阅读，/ 内容更难直接提取。` in Chinese. The smaller line below it is exactly `DO NOT PLAGIARIZE MY PDF!` or `别抄我的 PDF ！`. Keep the factual local-processing descriptor in the footer. Hero benefits are dark mode, multilingual support and no sign-up; omit the homepage screenshot caption.
-- `site.appVersion` is the desktop source version (currently 1.0.0), not the website package version. Show the localized coming-soon status until a release is confirmed, and update this value when desktop releases change.
+- The website package and desktop source versions are aligned at 1.0.0 for this release preparation. `site.appVersion` tracks the desktop source rather than the website package. Show the localized coming-soon status until a release is confirmed. Update the Service Worker cache version when publishing a website update.
 - Use ASCII ` - ` in document titles. Use GitHub issues for support and privacy questions; do not display email addresses or email instructions. The publisher wordmark and uppercase copyright text both link to https://bitcookies.nousbuild.com/.
 - `public/microsoft-store-en.svg` and `public/microsoft-store-zh.svg` are official Microsoft SVG badges downloaded from get.microsoft.com. Keep original artwork and local loading.
 - Keep the template MIT notice unchanged in LICENSE (no extension). The footer links to the desktop app's separate GPL license.

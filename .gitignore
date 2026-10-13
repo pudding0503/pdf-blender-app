@@ -15,6 +15,8 @@ next-env.d.ts
 /public/favicon.ico
 /public/apple-touch-icon.png
 /public/bitcookies-words.svg
+/public/logo.png
+/public/pwa-icon-*.png
 
 # Local environment and deployment state
 .env*
