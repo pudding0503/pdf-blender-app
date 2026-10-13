@@ -13,6 +13,13 @@ import ScreenshotFrame from "./screenshot-frame";
 import AnimatedSection from "./animated-section";
 
 const icons = [ScanLine, Type, Layers, Sparkles, Copyright, SlidersHorizontal];
+
+function HeroLine({ text, locale }: { text: string; locale: "en" | "zh" }) {
+  const punctuation = locale === "zh" && /[，。]$/.test(text) ? text.slice(-1) : "";
+  const content = punctuation ? text.slice(0, -1) : text;
+  return <>{content}{punctuation && <span className="hero-punctuation" aria-hidden="true">{punctuation}</span>}</>;
+}
+
 export default function Home() {
   const { locale } = useLanguage();
   const { resolvedTheme } = useTheme();
@@ -23,7 +30,7 @@ export default function Home() {
       <motion.div className="hero-light" aria-hidden="true" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: reduced ? 0 : 2, delay: reduced ? 0 : 0.5 }}><div /></motion.div>
       <motion.div data-reveal initial={{ y: 20, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ duration: reduced ? 0 : 0.6, type: "spring", bounce: 0 }}>
       <p className="eyebrow"><Package size={14} aria-hidden="true" />v{site.appVersion} · {c.releaseStatus}</p>
-      <h1>{c.headline}{" "}<br /><span>{c.headlineAccent}</span></h1>
+      <h1 aria-label={`${c.headline} ${c.headlineAccent}`}><span aria-hidden="true"><HeroLine text={c.headline} locale={locale} />{" "}<br /><span><HeroLine text={c.headlineAccent} locale={locale} /></span></span></h1>
       <p className="hero-description">{c.description}</p>
       <div className="hero-actions"><StoreButton /></div>
       <ul className="hero-facts">{c.facts.map(fact => <li key={fact}><Check size={14} aria-hidden="true" />{fact}</li>)}</ul>

@@ -78,6 +78,7 @@ a:focus-visible, button:focus-visible, select:focus-visible, [tabindex="0"]:focu
 @keyframes hero-light-drift { from { transform: translate3d(-12px, -10px, 0) rotate(35deg); opacity: .8; } to { transform: translate3d(18px, 16px, 0) rotate(32deg); opacity: 1; } }
 .eyebrow { display: inline-flex; align-items: center; gap: 7px; border: 1px solid var(--border); background: var(--card); padding: 7px 13px; font-size: 12px; border-radius: 999px; color: var(--muted-foreground); }
 .hero h1 { font-size: clamp(36px, 5.2vw, 62px); line-height: 1.12; letter-spacing: -.055em; font-weight: 550; margin: 24px 0 20px; text-wrap: balance; background: linear-gradient(to bottom, var(--hero-start), var(--hero-end)); background-clip: text; -webkit-background-clip: text; color: transparent; }
+.hero-punctuation { display: inline-block; width: 0; overflow: visible; }
 .hero-description { max-width: 640px; margin-inline: auto; color: var(--muted-foreground); font-size: 17px; line-height: 1.8; text-wrap: pretty; }
 .hero-actions { margin-top: 26px; }
 .store-button { display: inline-flex; flex-shrink: 0; border-radius: 7px; }
@@ -137,7 +138,6 @@ h3 { font-size: 16px; font-weight: 600; letter-spacing: -.025em; }
 .footer-bottom a:hover { color: var(--primary); }
 .publisher-logo { display: inline-flex; width: 126px; }
 .publisher-logo img { width: 100%; height: auto; }
-.dark .publisher-logo { background: #f4f4f5; padding: 4px 8px; border-radius: 5px; width: 142px; }
 .privacy-page { max-width: 780px; padding-block: 44px 76px; }
 .back-link { display: inline-flex; align-items: center; gap: 7px; color: var(--muted-foreground); font-size: 13px; }
 .privacy-header { margin-top: 42px; }
