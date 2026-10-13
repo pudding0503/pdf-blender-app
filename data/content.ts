@@ -41,7 +41,7 @@ const zh: typeof en = {
   nav: ["功能", "使用方法", "常见问题"], skip: "跳到正文",
   themes: ["系统", "浅色", "深色"],
   releaseStatus: "即将发布", headline: "PDF 便于阅读，", headlineAccent: "内容更难直接提取。",
-  description: "别抄我的 PDF ！",
+  description: "别抄我的 PDF！",
   facts: ["深色模式", "多语言", "免注册"],
   homeAlt: "PDF Blender 主页，显示 PDF 拖放区域、已填充的配置槽位和处理按钮。",
   featuresTitle: "按需要组合 PDF 功能", featuresSubtitle: "从页面整理到复制防护，每项功能由你选择。",
@@ -72,6 +72,6 @@ const zh: typeof en = {
     ["遇到问题怎么反馈？", "可在 GitHub 提交问题。请描述软件版本和复现步骤，不要公开上传敏感 PDF。"],
   ],
   finalTitle: "让下一份 PDF 更适合分享。", finalDescription: "先选配置，再检查处理效果。",
-  slogan: "别抄我的 PDF ！", footerDescription: "本地 PDF 整理与提取防护工具。", resources: "资源", contact: "联系", privacy: "隐私政策", license: "软件许可 · GPL v3", issues: "反馈问题", effective: "生效日期", back: "返回首页", contents: "本页目录",
+  slogan: "别抄我的 PDF！", footerDescription: "本地 PDF 整理与提取防护工具。", resources: "资源", contact: "联系", privacy: "隐私政策", license: "软件许可 · GPL v3", issues: "反馈问题", effective: "生效日期", back: "返回首页", contents: "本页目录",
 };
 export const content: Record<Locale, typeof en> = { en, zh };
