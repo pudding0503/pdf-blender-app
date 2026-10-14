@@ -9,7 +9,7 @@ export const site = {
   license: "https://github.com/bitcookies/pdf-blender/blob/main/LICENSE",
   publisher: "https://bitcookies.nousbuild.com/",
   // Desktop source version (Directory.Build.props), not a published release.
-  appVersion: "1.0.0",
+  appVersion: "1.0.1",
   policyDate: "2026-10-12",
 };
 
