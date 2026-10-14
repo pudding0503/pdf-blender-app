@@ -40,7 +40,7 @@ const en = {
 const zh: typeof en = {
   nav: ["功能", "使用方法", "常见问题"], skip: "跳到正文",
   themes: ["系统", "浅色", "深色"],
-  releaseStatus: "即将发布", headline: "PDF 便于阅读，", headlineAccent: "内容更难直接提取。",
+  releaseStatus: "即将发布", headline: "使 PDF 保持便于阅读，", headlineAccent: "但使内容更难复制。",
   description: "别抄我的 PDF！",
   facts: ["深色模式", "多语言", "免注册"],
   homeAlt: "PDF Blender 主页，显示 PDF 拖放区域、已填充的配置槽位和处理按钮。",

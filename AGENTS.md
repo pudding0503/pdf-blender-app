@@ -32,7 +32,7 @@ The active website uses the simpler SaaS Landing Template's restrained visual sy
 
 ## Assets and Content
 - Preserve every existing file in assets/. The user manages replacements there; the template ZIP is a local reference ignored by Git.
-- Screenshots and logo use static imports from assets/. `data/screenshots.ts` imports the eight light/dark JPG variants; match the resolved website theme without resetting the selected gallery tab. ScreenshotFrame shares decoding, crossfade, delayed feedback and retry logic across hero and gallery. `scripts/sync-assets.mjs` copies icons and wordmark into public/ before dev/build. Do not edit those copies directly.
+- Screenshots and logo use static imports from assets/. `data/screenshots.ts` imports the sixteen `screenshot-{1..4}-{en|zh}-{light|dark}.png` variants; match the resolved language and theme without resetting the selected gallery tab. ScreenshotFrame shares decoding, crossfade, delayed feedback and retry logic across hero and gallery. `scripts/sync-assets.mjs` copies icons and wordmark into public/ before dev/build. Do not edit those copies directly.
 - Use local runtime assets and Geist Sans from `geist/font/sans`; do not fetch Google Fonts during builds or add analytics, external embeds or upload forms.
 - Follow the selected template's visual system. Previous UCDT and Chakra/Saas UI assumptions are retired.
 - PDF Blender content should remain data-driven and use truthful Microsoft Store release information. The explicit user request authorizes the current Store badge/link; do not infer availability or installation verification from it.
