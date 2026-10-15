@@ -3,7 +3,7 @@ import type { Locale } from "@/lib/site";
 const en = {
   nav: ["Features", "How it works", "FAQ"], skip: "Skip to content",
   themes: ["System", "Light", "Dark"],
-  releaseStatus: "Coming soon", headline: "Keep PDFs readable.", headlineAccent: "Make extraction harder.",
+  versionLabel: "Current version", headline: "Keep PDFs readable.", headlineAccent: "Make extraction harder.",
   description: "DO NOT PLAGIARIZE MY PDF!",
   facts: ["Dark mode", "Multilingual", "No sign-up"],
   homeAlt: "PDF Blender home with a PDF drop area, populated configuration slots and processing controls.",
@@ -40,7 +40,7 @@ const en = {
 const zh: typeof en = {
   nav: ["功能", "使用方法", "常见问题"], skip: "跳到正文",
   themes: ["系统", "浅色", "深色"],
-  releaseStatus: "即将发布", headline: "使 PDF 保持便于阅读，", headlineAccent: "但使内容更难复制。",
+  versionLabel: "当前版本", headline: "使 PDF 保持便于阅读，", headlineAccent: "但使内容更难复制。",
   description: "别抄我的 PDF！",
   facts: ["深色模式", "多语言", "免注册"],
   homeAlt: "PDF Blender 主页，显示 PDF 拖放区域、已填充的配置槽位和处理按钮。",

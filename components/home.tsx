@@ -4,7 +4,6 @@ import { Check, ScanLine, Type, Layers, Sparkles, Copyright, SlidersHorizontal, 
 import { useTheme } from "next-themes";
 import { homeScreenshots, screenshotThemeOffset } from "@/data/screenshots";
 import { content } from "@/data/content";
-import { site } from "@/lib/site";
 import { useLanguage } from "./language-provider";
 import StoreButton from "./store-button";
 import Faq from "./faq";
@@ -20,7 +19,7 @@ function HeroLine({ text, locale }: { text: string; locale: "en" | "zh" }) {
   return <>{content}{punctuation && <span className="hero-punctuation" aria-hidden="true">{punctuation}</span>}</>;
 }
 
-export default function Home() {
+export default function Home({ appVersion }: { appVersion: string }) {
   const { locale } = useLanguage();
   const { resolvedTheme } = useTheme();
   const c = content[locale];
@@ -29,7 +28,7 @@ export default function Home() {
     <section className="hero container">
       <motion.div className="hero-light" aria-hidden="true" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: reduced ? 0 : 2, delay: reduced ? 0 : 0.5 }}><div /></motion.div>
       <motion.div data-reveal initial={{ y: 20, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ duration: reduced ? 0 : 0.6, type: "spring", bounce: 0 }}>
-      <p className="eyebrow"><Package size={14} aria-hidden="true" />v{site.appVersion} · {c.releaseStatus}</p>
+      <p className="eyebrow"><Package size={14} aria-hidden="true" />{c.versionLabel} v{appVersion}</p>
       <h1 aria-label={`${c.headline} ${c.headlineAccent}`}><span aria-hidden="true"><HeroLine text={c.headline} locale={locale} />{" "}<br /><span><HeroLine text={c.headlineAccent} locale={locale} /></span></span></h1>
       <p className="hero-description">{c.description}</p>
       <div className="hero-actions"><StoreButton /></div>

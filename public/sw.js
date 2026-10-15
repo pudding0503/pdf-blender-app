@@ -1,5 +1,5 @@
 // Bump this revision whenever website assets change so clients discard stale caches.
-const VERSION = "1.0.1";
+const VERSION = "1.1.0";
 const STATIC_CACHE = `pdf-blender-static-v${VERSION}`;
 const PAGE_CACHE = `pdf-blender-pages-v${VERSION}`;
 const OFFLINE_URL = "/offline.html";

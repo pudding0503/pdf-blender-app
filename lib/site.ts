@@ -4,14 +4,60 @@ export type Locale = "en" | "zh";
 export const site = {
   origin: process.env.NEXT_PUBLIC_SITE_URL || "https://pdf-blender.vercel.app",
   github: "https://github.com/bitcookies/pdf-blender",
+  storeProductId: "9P65NBNQRGVZ",
   store: "https://apps.microsoft.com/detail/9P65NBNQRGVZ",
   issues: "https://github.com/bitcookies/pdf-blender/issues",
   license: "https://github.com/bitcookies/pdf-blender/blob/main/LICENSE",
   publisher: "https://bitcookies.nousbuild.com/",
-  // Desktop source version (Directory.Build.props), not a published release.
+  // Fallback used when the Microsoft Store product API is unavailable.
   appVersion: "1.0.1",
   policyDate: "2026-10-12",
 };
+
+const storeProductApi = `https://storeedgefd.dsx.mp.microsoft.com/v9.0/products/${site.storeProductId}?market=US&locale=en-US`;
+const versionKeys = new Set(["version", "displayversion", "productversion", "packageversion"]);
+const versionPattern = /^v?(\d+\.\d+(?:\.\d+){0,2}(?:[-+][0-9A-Za-z.-]+)?)$/;
+
+function normalizeDisplayVersion(version: string): string {
+  const separator = version.search(/[-+]/);
+  const main = separator === -1 ? version : version.slice(0, separator);
+  const suffix = separator === -1 ? "" : version.slice(separator);
+  const parts = main.split(".").slice(0, 3);
+  while (parts.length < 3) parts.push("0");
+  return `${parts.join(".")}${suffix}`;
+}
+
+function findVersion(value: unknown): string | undefined {
+  if (!value || typeof value !== "object") return undefined;
+  for (const [key, nested] of Object.entries(value)) {
+    if (versionKeys.has(key.toLowerCase()) && typeof nested === "string") {
+      const match = nested.match(versionPattern);
+      if (match) return normalizeDisplayVersion(match[1]);
+    }
+    const result = findVersion(nested);
+    if (result) return result;
+  }
+  return undefined;
+}
+
+/**
+ * Reads the published desktop version from Microsoft Store with hourly ISR.
+ * Store API changes or transient failures fall back to the last known version.
+ */
+export async function getPublishedAppVersion(): Promise<string> {
+  try {
+    const response = await fetch(storeProductApi, {
+      headers: { Accept: "application/json" },
+      signal: AbortSignal.timeout(8000),
+      next: { revalidate: 3600 },
+    });
+    if (!response.ok) return site.appVersion;
+    const version = findVersion(await response.json());
+    return version || site.appVersion;
+  } catch {
+    return site.appVersion;
+  }
+}
 
 export function pageMetadata(locale: Locale, privacy = false): Metadata {
   const title = privacy

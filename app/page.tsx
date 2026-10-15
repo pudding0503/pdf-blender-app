@@ -1,4 +1,7 @@
 import Home from "@/components/home";
-import { pageMetadata } from "@/lib/site";
+import { getPublishedAppVersion, pageMetadata } from "@/lib/site";
 export const metadata = pageMetadata("en");
-export default function Page() { return <Home />; }
+export default async function Page() {
+  const appVersion = await getPublishedAppVersion();
+  return <Home appVersion={appVersion} />;
+}
