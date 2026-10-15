@@ -9,13 +9,10 @@ export const site = {
   issues: "https://github.com/bitcookies/pdf-blender/issues",
   license: "https://github.com/bitcookies/pdf-blender/blob/main/LICENSE",
   publisher: "https://bitcookies.nousbuild.com/",
-  // Fallback used when the Microsoft Store product API is unavailable.
-  appVersion: "1.0.1",
   policyDate: "2026-10-12",
 };
 
-const storeProductApi = `https://storeedgefd.dsx.mp.microsoft.com/v9.0/products/${site.storeProductId}?market=US&locale=en-US`;
-const versionKeys = new Set(["version", "displayversion", "productversion", "packageversion"]);
+const latestReleaseApi = "https://api.github.com/repos/bitcookies/pdf-blender/releases/latest";
 const versionPattern = /^v?(\d+\.\d+(?:\.\d+){0,2}(?:[-+][0-9A-Za-z.-]+)?)$/;
 
 function normalizeDisplayVersion(version: string): string {
@@ -27,35 +24,33 @@ function normalizeDisplayVersion(version: string): string {
   return `${parts.join(".")}${suffix}`;
 }
 
-function findVersion(value: unknown): string | undefined {
-  if (!value || typeof value !== "object") return undefined;
-  for (const [key, nested] of Object.entries(value)) {
-    if (versionKeys.has(key.toLowerCase()) && typeof nested === "string") {
-      const match = nested.match(versionPattern);
-      if (match) return normalizeDisplayVersion(match[1]);
-    }
-    const result = findVersion(nested);
-    if (result) return result;
-  }
-  return undefined;
-}
-
 /**
- * Reads the published desktop version from Microsoft Store with hourly ISR.
- * Store API changes or transient failures fall back to the last known version.
+ * Reads the latest stable desktop release from GitHub with hourly ISR.
  */
-export async function getPublishedAppVersion(): Promise<string> {
+export async function getLatestAppVersion(): Promise<string | null> {
   try {
-    const response = await fetch(storeProductApi, {
-      headers: { Accept: "application/json" },
+    const response = await fetch(latestReleaseApi, {
+      headers: {
+        Accept: "application/vnd.github+json",
+        "User-Agent": "PDF-Blender-website",
+      },
       signal: AbortSignal.timeout(8000),
       next: { revalidate: 3600 },
     });
-    if (!response.ok) return site.appVersion;
-    const version = findVersion(await response.json());
-    return version || site.appVersion;
+    if (!response.ok) {
+      console.warn(`GitHub release version lookup failed with HTTP ${response.status}.`);
+      return null;
+    }
+
+    const data: unknown = await response.json();
+    if (!data || typeof data !== "object" || !("tag_name" in data)) return null;
+    const rawVersion = data.tag_name;
+    if (typeof rawVersion !== "string" || !rawVersion) return null;
+    const match = rawVersion.match(versionPattern);
+    return match ? normalizeDisplayVersion(match[1]) : null;
   } catch {
-    return site.appVersion;
+    console.warn("GitHub release version lookup failed.");
+    return null;
   }
 }
 
