@@ -6,6 +6,7 @@ import NavBar from "@/components/navbar";
 import Footer from "@/components/footer";
 import SkipLink from "@/components/skip-link";
 import ServiceWorkerRegister from "@/components/service-worker-register";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 export const viewport: Viewport = {
   colorScheme: "light dark",
@@ -17,6 +18,6 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return <html lang="en" suppressHydrationWarning><body className={GeistSans.variable}><Providers>
-    <SkipLink /><NavBar />{children}<Footer /><ServiceWorkerRegister />
+    <SkipLink /><NavBar />{children}<Footer /><ServiceWorkerRegister /><SpeedInsights />
   </Providers></body></html>;
 }

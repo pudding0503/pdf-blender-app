@@ -40,7 +40,7 @@
         "title": "6. 产品网站",
         "paragraphs": [
           "产品网站由 Vercel 托管。访问网站时，Vercel 及其交付基础设施可能为提供页面、保障安全和排查故障处理 IP 地址、请求路径、访问时间和浏览器相关技术信息。这些网站访问数据不同于桌面应用中的 PDF 内容；网站不提供 PDF 上传或在线处理功能。",
-          "本网站不设置广告或行为分析工具。浏览器在本地保存您选择的主题和语言，用于下次访问时恢复界面。网站通过 Service Worker 在浏览器内缓存已访问的页面和静态资源，以支持离线浏览；这些缓存不包含 PDF 文件，可在浏览器的网站数据设置中清除。托管服务的信息处理详情请参阅 [Vercel 隐私政策](https://vercel.com/legal/privacy-policy)。本政策不承诺我们无法核实的托管日志保留期限。"
+          "本网站不设置广告或行为分析工具。网站使用 Vercel Speed Insights 收集页面性能指标（包括 Core Web Vitals），以评估和改进网站性能；相关数据由 Vercel 处理，详情请参阅 [Vercel 隐私政策](https://vercel.com/legal/privacy-policy)。浏览器在本地保存您选择的主题和语言，用于下次访问时恢复界面。网站通过 Service Worker 在浏览器内缓存已访问的页面和静态资源，以支持离线浏览；这些缓存不包含 PDF 文件，可在浏览器的网站数据设置中清除。本政策不承诺我们无法核实的托管日志保留期限。"
         ]
       },
       {
@@ -98,7 +98,7 @@
         "title": "6. Product website",
         "paragraphs": [
           "The website is hosted by Vercel. When you visit, Vercel and its delivery infrastructure may process IP addresses, request paths, timestamps and browser-related technical information to deliver pages, maintain security and troubleshoot issues. Website requests are separate from PDFs processed by the desktop app. The website has no PDF upload or online processing feature.",
-          "The website uses no advertising or behavioral analytics tools. Your browser stores your selected theme and language locally to restore the interface on a later visit. A service worker caches visited pages and static assets in your browser for offline browsing. These caches contain no PDF files and can be cleared in your browser's site-data settings. See [Vercel's Privacy Policy](https://vercel.com/legal/privacy-policy) for hosting-related information. We do not state a hosting-log retention period that we have not verified."
+          "The website uses no advertising or behavioral analytics tools. It uses Vercel Speed Insights to collect page performance metrics, including Core Web Vitals, to assess and improve site performance. Vercel processes these metrics; see [Vercel's Privacy Policy](https://vercel.com/legal/privacy-policy) for details. Your browser stores your selected theme and language locally to restore the interface on a later visit. A service worker caches visited pages and static assets in your browser for offline browsing. These caches contain no PDF files and can be cleared in your browser's site-data settings. We do not state a hosting-log retention period that we have not verified."
         ]
       },
       {
